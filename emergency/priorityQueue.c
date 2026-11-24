@@ -170,7 +170,7 @@ void display_next_patient_pqueue(void)
 
     printf("------------------------------------------\n");
 
-    Sleep(50000);
+    Sleep(5000);
 }
 
 // Displays the emergency menu and routes operations to queue functions.
