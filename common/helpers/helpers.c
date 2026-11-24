@@ -1,11 +1,18 @@
-// Shared input helpers for validated integers and alphabetic patient names.
+/*
+ * helpers.c
+ * Shared console input helpers for validated integer values and alphabetic names.
+ * Invalid integer lines and names containing characters other than letters or spaces are rejected.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 
 #include "helpers.h"
 
-// Reads one complete line and accepts only a valid integer.
+/*
+ * Reads and validates one complete integer input line.
+ * Rejects non-integer values and extra trailing characters, then prompts again.
+ */
 int inputInteger(void)
 {
     int value;
@@ -21,7 +28,10 @@ int inputInteger(void)
     }
 }
 
-// Reads a patient name and repeats until it contains only letters and spaces.
+/*
+ * Reads a patient name and recursively repeats validation until it contains only letters and spaces.
+ * Rejects digits, punctuation, and other special characters.
+ */
 void inputString(char string[])
 {
     scanf(" %99[^\n]", string);

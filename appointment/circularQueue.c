@@ -1,4 +1,8 @@
-// OPD queue implementation using a fixed-size circular array.
+/*
+ * circularQueue.c
+ * Implements the OPD patient queue with a fixed-size circular array.
+ * Supports FIFO enrollment, treatment, queue display, capacity checks, and menu navigation.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -134,6 +138,7 @@ void display_next_patient_cqueue(void)
     Sleep(5000);
 }
 
+// Reports the queue capacity, current occupancy, and number of free slots.
 void check_available_slots_cqueue(void)
 {
     system("cls");

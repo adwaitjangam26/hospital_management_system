@@ -1,4 +1,8 @@
-// Emergency queue implementation using a linked list ordered by patient priority.
+/*
+ * priorityQueue.c
+ * Implements emergency patient management with a priority-sorted linked queue.
+ * Critical, high, and low-priority patients are ordered while preserving arrival order within each priority.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>

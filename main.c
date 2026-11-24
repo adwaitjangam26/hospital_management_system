@@ -1,4 +1,8 @@
-// Main entry point and top-level menu for the hospital management system.
+/*
+ * main.c
+ * Application entry point for the hospital management system.
+ * Displays the top-level menu and routes users to emergency or OPD operations.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -7,7 +11,8 @@
 #include "./emergency/priorityQueue.h"
 #include "./appointment/circularQueue.h"
 
-int main(){
+// Runs the hospital menu, calls choices, and exits on request.
+int main(void){
     int flag = 0;
     int choice;
 
