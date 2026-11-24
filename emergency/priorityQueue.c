@@ -1,24 +1,27 @@
+// Emergency queue implementation using a linked list ordered by patient priority.
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <windows.h>
 
 #include "priorityQueue.h"
 #include "../common/patient.h"
 #include "../common/helpers/helpers.h"
 
+// Each node contains one patient and a link to the next waiting patient.
 typedef struct EmergencyPatient
 {
-    Patient patient;
+    Patient patient; //this is taken from ../common/patient.h
     int priority;
     struct EmergencyPatient *next;
 } EmergencyPatient;
 
 static EmergencyPatient *head = NULL;
 
+// Inserts a patient according to priority; equal priorities preserve arrival order.
 void add_patient_pqueue(void)
 {
     system("cls");
+    // Allocate memory for a new queue node before collecting patient details.
     EmergencyPatient *newNode = malloc(sizeof(EmergencyPatient));
 
     if (newNode == NULL)
@@ -57,7 +60,7 @@ void add_patient_pqueue(void)
 
     newNode->next = NULL;
 
-    if (head == NULL || newNode->priority < head->priority)
+    if (head == NULL || newNode->priority < head->priority) //newNode->priority < head->priorit is required if head has lesser priority than new patient. (basically insert at front condition)
     {
         newNode->next = head;
         head = newNode;
@@ -80,6 +83,7 @@ void add_patient_pqueue(void)
     Sleep(1000);
 }
 
+// Removes and frees the highest-priority patient at the head of the queue.
 void treat_patient_pqueue(void)
 {
     system("cls");
@@ -99,7 +103,7 @@ void treat_patient_pqueue(void)
     printf("  Priority     : %d\n", temp->priority);
     printf("------------------------------------------\n");
 
-    head = head->next;
+    head = head->next; //if head is the only node, then head->next is already NULL
 
     free(temp);
 
@@ -107,6 +111,7 @@ void treat_patient_pqueue(void)
     Sleep(5000);
 }
 
+// Traverses the queue from head to tail and prints every waiting patient.
 void display_all_patients_pqueue(void)
 {
     system("cls");
@@ -141,6 +146,7 @@ void display_all_patients_pqueue(void)
     Sleep(10000);
 }
 
+//peek function
 void display_next_patient_pqueue(void)
 {
     system("cls");
@@ -163,6 +169,7 @@ void display_next_patient_pqueue(void)
     Sleep(50000);
 }
 
+// Displays the emergency menu and routes operations to queue functions.
 void emergencyManagement_menu(void)
 {
     int flag = 0;

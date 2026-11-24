@@ -1,9 +1,11 @@
+// Shared input helpers for validated integers and alphabetic patient names.
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 
 #include "helpers.h"
 
+// Reads one complete line and accepts only a valid integer.
 int inputInteger(void)
 {
     int value;
@@ -19,6 +21,7 @@ int inputInteger(void)
     }
 }
 
+// Reads a patient name and repeats until it contains only letters and spaces.
 void inputString(char string[])
 {
     scanf(" %99[^\n]", string);

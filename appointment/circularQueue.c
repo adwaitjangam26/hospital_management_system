@@ -1,3 +1,4 @@
+// OPD queue implementation using a fixed-size circular array.
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -15,6 +16,7 @@ static int rear = -1;
 static int count = 0;
 
 
+// Adds a patient at the rear, wrapping the index when the array ends.
 void add_patient_cqueue(void)
 {
     system("cls");
@@ -32,7 +34,7 @@ void add_patient_cqueue(void)
     }
     else
     {
-        rear = (rear + 1) % MAX_SIZE;
+        rear = (rear + 1) % MAX_SIZE; //eg if rear = 25. NEW rear would be 25+1 = 26%25 = 1
     }
 
     printf("\nEnter Patient Name: ");
@@ -45,6 +47,7 @@ void add_patient_cqueue(void)
 }
 
 
+// Removes the patient at the front and advances it circularly.
 void treat_patient_cqueue(void)
 {
     system("cls");
@@ -61,7 +64,7 @@ void treat_patient_cqueue(void)
     printf("  Patient Name : %s\n", queue[front].name);
     printf("------------------------------------------\n");
 
-    if (count == 1)
+    if (count == 1) //resetting front and rear to -1 if queue will get empty after dequeue
     {
         front = -1;
         rear = -1;
@@ -77,6 +80,7 @@ void treat_patient_cqueue(void)
     Sleep(5000);
 }
 
+// Prints queue entries in treatment order, wrapping from rear to front if needed.
 void display_all_patients_cqueue(void)
 {
     system("cls");
@@ -107,7 +111,7 @@ void display_all_patients_cqueue(void)
     Sleep(2000);
 }
 
-
+//Displays the next patient to be dequeued (peek)
 void display_next_patient_cqueue(void)
 {
     system("cls");
@@ -147,6 +151,7 @@ void check_available_slots_cqueue(void)
     Sleep(5000);
 }
 
+// Displays the OPD menu and routes operations to circular queue functions.
 void opdManagement_menu(void)
 {
     int flag = 0;

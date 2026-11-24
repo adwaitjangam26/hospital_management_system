@@ -1,3 +1,4 @@
+// Main entry point and top-level menu for the hospital management system.
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -24,6 +25,7 @@ int main(){
         printf("  Enter your choice: ");
         choice = inputInteger(); //This is a custom helper function created to accept integer only.
 
+        // Route the validated menu selection to the selected subsystem.
         switch(choice){
             case 1:
                 emergencyManagement_menu();
