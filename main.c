@@ -11,6 +11,7 @@
 #include "./emergency/priorityQueue.h"
 #include "./appointment/circularQueue.h"
 #include "./departments/departmentBT.h"
+#include "./admission/admission.h"
 
 // Runs the hospital menu, calls choices, and exits on request.
 int main(void){
@@ -26,6 +27,7 @@ int main(void){
         printf("==========================================\n");
         printf("  [1] Emergency Management                \n");
         printf("  [2] OPD Appointment Management          \n");
+        printf("  [3] Admitted Patients                    \n");
         printf("  [4] Department Management               \n");
         printf("  [5] Exit                                \n");
         printf("------------------------------------------\n");
@@ -39,6 +41,9 @@ int main(void){
                 break;
             case 2:
                 opdManagement_menu();
+                break;
+            case 3:
+                admissionManagement_menu();
                 break;
             case 4:
                 departmentManagement_menu();
